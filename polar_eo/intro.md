@@ -1,12 +1,8 @@
-# Welcome to your Jupyter Book
+# A Guide to Polar Earth Observation
 
-TEST
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+This is a Jupyter Book which showcase a range of polar-science related earth observatio (EO) datasets, how to access them, and how they can be used.
 
-Check out the content pages bundled with this sample book to see more.
+This website was created as part of the PolarEO subgroup of APECS.
 
 ```{tableofcontents}
 ```
