@@ -75,7 +75,7 @@ instance/
 .scrapy
 
 # Sphinx documentation
-book/_build/
+polar_eo/_build/
 
 # PyBuilder
 .pybuilder/
