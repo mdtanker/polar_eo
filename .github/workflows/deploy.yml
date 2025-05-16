@@ -41,20 +41,27 @@ jobs:
     # if you have config:
     # execute:
     #   execute_notebooks: cache
-    - name: cache executed notebooks
-      uses: actions/cache@v4
-      with:
-        path: _build/.jupyter_cache
-        key: jupyter-book-cache-${{ hashFiles('requirements.txt') }}
+    # - name: cache executed notebooks
+    #   uses: actions/cache@v4
+    #   with:
+    #     path: _build/.jupyter_cache
+    #     key: jupyter-book-cache-${{ hashFiles('requirements.txt') }}
 
     # Build the book
     - name: Build the book
       run: |
-        jupyter-book build polar_eo
+        jupyter-book build polar_eo/
+
+    - name: Upload book as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: book
+        path: polar_eo/_build/html/
+        retention-days: 1
 
     # Deploy the book's HTML to gh-pages branch
     - name: GitHub Pages action
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: polar_eo/_build/html
+        publish_dir: ./polar_eo/_build/html
