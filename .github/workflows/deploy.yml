@@ -58,4 +58,3 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         source-dir: ./polar_eo/_build/
-        preview-branch: main
