@@ -29,8 +29,8 @@ jobs:
     - name: Setup Mambaforge
       uses: mamba-org/setup-micromamba@v2
       with:
-        environment-file: environment.yml
-        environment-name: polar_eo
+        environment-file: gha_environment.yml
+        environment-name: gha_environment
 
     # Build the book
     - name: Build the book
