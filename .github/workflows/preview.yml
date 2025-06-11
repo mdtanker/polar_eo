@@ -17,7 +17,7 @@ jobs:
         uses: rossjrw/pr-preview-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          preview-branch: main
+          # preview-branch: main
           source-dir: .
           # source-dir: ./polar_eo/_build/
           umbrella-dir: pr-preview
