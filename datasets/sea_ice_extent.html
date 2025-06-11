@@ -1,0 +1,1081 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Monitoring sea ice extent with Earth Observation Data &#8212; Guide to Polar Earth Observation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'datasets/sea_ice_extent';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Template: Title" href="template.html" />
+    <link rel="prev" title="Polar Dataset Guides" href="datasets.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/apecs_logo.jpg" class="logo__image only-light" alt="Guide to Polar Earth Observation - Home"/>
+    <script>document.write(`<img src="../_static/apecs_logo.jpg" class="logo__image only-dark" alt="Guide to Polar Earth Observation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    A Guide to Polar Earth Observation
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Polar EO Data</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../accessing_data.html">Accessing Polar EO data</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="datasets.html">Polar Dataset Guides</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Monitoring sea ice extent with Earth Observation Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="template.html">Template: Title</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Website Creation Guides</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mdtanker/polar_eo" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mdtanker/polar_eo/issues/new?title=Issue%20on%20page%20%2Fdatasets/sea_ice_extent.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/datasets/sea_ice_extent.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Monitoring sea ice extent with Earth Observation Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro">Intro</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plain-language-introduction">Plain language introduction:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-eo-datasets-platforms">Key EO datasets &amp; platforms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#passive-microwave-radiometers-ssmi-s-amsr2">Passive Microwave Radiometers (SSMI/S, AMSR2):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-aperture-radar-sar-sentinel-1">Synthetic Aperture Radar (SAR) – Sentinel-1:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optical-imagers-modis-and-viirs">Optical Imagers – MODIS and VIIRS:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#icesat-2-laser-altimetry">ICESat-2 (Laser Altimetry):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-notable-datasets-platforms">Other Notable Datasets/Platforms:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-and-process-the-data">How to access and process the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-dependencies">Required dependencies:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-sea-ice-concentration-data">Download sea ice concentration data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#api">API</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#manually">Manually</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-data-and-calculate-the-sea-ice-extent">Load the data and calculate the sea ice extent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-sea-ice-concentration-and-extent-geographically">Visualize sea ice concentration and extent geographically</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-sea-ice-extent-time-series">Plot the sea ice extent time series</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-next">What next ?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-challenges-and-solutions">Common challenges and solutions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-example-application">Case study / example application</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arctic-sea-ice-decline-19792023">Arctic sea ice decline (1979–2023)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#antarctic-sea-ice-variability-and-decline">Antarctic sea ice variability and decline</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources-references">Additional resources &amp; references</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-portals">Data portals:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials">Tutorials:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-python-libraries">Useful Python Libraries:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relevant-publications">Relevant publications:</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="monitoring-sea-ice-extent-with-earth-observation-data">
+<h1>Monitoring sea ice extent with Earth Observation Data<a class="headerlink" href="#monitoring-sea-ice-extent-with-earth-observation-data" title="Link to this heading">#</a></h1>
+<p>This content is aimed at glaciologists, oceanographers, climate scientists, and other polar researchers who rely on EO data to monitor sea ice extent and understand its changes over time.</p>
+<section id="intro">
+<h2>Intro<a class="headerlink" href="#intro" title="Link to this heading">#</a></h2>
+<p>Sea ice extent – the area of ocean covered by sea ice – is a critical indicator of climate change in the polar regions. It plays a fundamental role in regulating global heat exchange, momentum transfer, and gas fluxes between the ocean and atmosphere (Wang et al., 2023). As such, sea ice impacts marine ecosystems (Massom and Stammerjohn, 2010), large-scale ocean circulation, and climate dynamics worldwide (Rysgaard et al., 2011; Massom et al., 2018; Van Achter et al., 2022).
+However, we have to be specific in what we mean by “area covered by sea ice” because sea-ice extent is derived from the ice concentration by counting all the grid points with an ice concentration higher than 15% as sea ice.
+Earth Observation (EO) satellites have revolutionized sea ice monitoring by providing consistent, year-round data in remote Arctic and Antarctic waters. Since 1978, satellites have continuously observed the seasonal growth and retreat of sea ice, allowing scientists to quantify long-term trends and variability. For instance, Arctic sea ice has been declining for decades, whereas Antarctic sea ice showed slight increases until 2014, followed by a rapid downturn (Parkinson and Cavalieri, 2012; Eayrs et al., 2021; Parkinson and DiGirolamo, 2021; Purich and Doddridge, 2023; Jena et al., 2024).</p>
+</section>
+<section id="plain-language-introduction">
+<h2>Plain language introduction:<a class="headerlink" href="#plain-language-introduction" title="Link to this heading">#</a></h2>
+<p>Sea ice acts like the planet’s air conditioner: its bright surface reflects sunlight back into space, helping keep polar temperatures cool. As ice melts and retreats, darker open water is exposed that absorbs more solar energy, accelerating warming and further ice loss in a feedback loop. Changes in sea ice extent affect polar ecosystems (e.g., habitat for seals, polar bears) and can even influence weather patterns and ocean circulation worldwide.</p>
+</section>
+<section id="key-eo-datasets-platforms">
+<h2>Key EO datasets &amp; platforms<a class="headerlink" href="#key-eo-datasets-platforms" title="Link to this heading">#</a></h2>
+<p>Several satellite missions and sensors provide data for monitoring sea ice concentration and deriving sea ice extent. Key datasets and their sources include:</p>
+<section id="passive-microwave-radiometers-ssmi-s-amsr2">
+<h3>Passive Microwave Radiometers (SSMI/S, AMSR2):<a class="headerlink" href="#passive-microwave-radiometers-ssmi-s-amsr2" title="Link to this heading">#</a></h3>
+<p>Passive microwave sensors have provided a continuous record of sea ice since 1979. Instruments like the SSM/I and SSMIS (on DMSP satellites) and JAXA’s AMSR2 (on GCOM-W, 2012–present) measure microwave emissions from the ocean surface, distinguishing ice from water. These sensors offer daily sea ice concentration maps at coarse resolution (~25 km grids), largely independent of sunlight or clouds. Long-term climate data records (e.g., the NOAA/NSIDC Sea Ice Index) are available through the National Snow and Ice Data Center (NSIDC): <a class="reference external" href="https://nsidc.org">https://nsidc.org</a>, and NASA Earthdata: <a class="reference external" href="https://earthdata.nasa.gov">https://earthdata.nasa.gov</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sea ice concentration is derived from various satellite-borne passive microwave radiometer (PMR) sensors using the algorithm developed and provided by NASA GSFC through a cooperative relationship between NASA and JAXA.
+Throughout history different sensors have been used for this scope:
+Jan.  1980 ～ Jul. 1987:   SMMR
+Jul.   1987 ～ Jun. 2002:  SSM/I
+Jun.  2002 ～ Oct. 2011:  AMSR-E
+Oct.  2011 ～ Jul. 2012:   WindSat
+Jul.   2012 ～ present:     AMSR2</p>
+<p>Data from 1979 to 1987 should be interpreted with caution, as there is higher uncertainty due to the transition between the SMMR satellite (1978-1987) and the SSM/I satellite, as discussed in detail by Haumann et al. (2016).</p>
+</div>
+</section>
+<section id="synthetic-aperture-radar-sar-sentinel-1">
+<h3>Synthetic Aperture Radar (SAR) – Sentinel-1:<a class="headerlink" href="#synthetic-aperture-radar-sar-sentinel-1" title="Link to this heading">#</a></h3>
+<p>Europe’s Sentinel-1A/B (launched 2014 onward) are C-band SAR satellites that deliver high-resolution (~20–50 m) imagery of sea ice. SAR can penetrate clouds and operate in polar night, enabling all-weather, day/night monitoring. In Extra-Wide swath mode (400 km swath, ~50 m resolution), Sentinel-1 provides detailed ice maps over large areas. These data are crucial for identifying ice edges, leads, and small ice floes that passive microwave sensors (~50–100 km resolution) cannot resolve (Dammann et al., 2019). Sentinel-1 data (Ground Range Detected format) can be downloaded freely from the Copernicus Open Access Hub: <a class="reference external" href="https://scihub.copernicus.eu">https://scihub.copernicus.eu</a> and Copernicus Marine Service (CMEMS): <a class="reference external" href="https://marine.copernicus.eu">https://marine.copernicus.eu</a>.</p>
+</section>
+<section id="optical-imagers-modis-and-viirs">
+<h3>Optical Imagers – MODIS and VIIRS:<a class="headerlink" href="#optical-imagers-modis-and-viirs" title="Link to this heading">#</a></h3>
+<p>NASA’s MODIS sensors on Terra/Aqua (since 2000) and VIIRS on Suomi-NPP/NOAA-20 provide visible and infrared imagery of sea ice at moderate resolution (250 m to 1 km). These sensors capture ice extent and surface conditions (e.g., melt ponds) in daylight and clear-sky conditions. They offer higher spatial detail than passive microwave but are limited by cloud cover and winter darkness (Hall &amp; Riggs, 2015). MODIS sea ice extent products (e.g., ice surface temperature, reflectance) can be obtained from NASA Earthdata (LAADS DAAC): <a class="reference external" href="https://ladsweb.modaps.eosdis.nasa.gov">https://ladsweb.modaps.eosdis.nasa.gov</a>.</p>
+</section>
+<section id="icesat-2-laser-altimetry">
+<h3>ICESat-2 (Laser Altimetry):<a class="headerlink" href="#icesat-2-laser-altimetry" title="Link to this heading">#</a></h3>
+<p>NASA’s ICESat-2 (launched 2018) carries a lidar instrument (ATLAS) that measures the height of the ice surface (freeboard). While primarily used for sea ice thickness estimates (by comparing ice freeboard to open water), ICESat-2’s along-track data can delineate the ice edge with high precision (Kwok et al., 2019). ICESat-2 data (e.g., ATL07 Sea Ice Height, ATL10 Freeboard) are distributed via NSIDC: <a class="reference external" href="https://nsidc.org/data/icesat-2">https://nsidc.org/data/icesat-2</a>.</p>
+</section>
+<section id="other-notable-datasets-platforms">
+<h3>Other Notable Datasets/Platforms:<a class="headerlink" href="#other-notable-datasets-platforms" title="Link to this heading">#</a></h3>
+<p>SMOS (ESA’s Soil Moisture Ocean Salinity mission) is an L-band radiometer that, while low resolution (~35–50 km), is used to retrieve thin ice thickness which complements extent measurements.
+PolarView provides integrated sea ice information (e.g., SAR quick-looks, AMSR2 concentration maps, ice charts) for operational use in Arctic and Antarctic regions. Copernicus Marine Environment Monitoring Service (CMEMS) provides processed sea ice products (concentration, drift) on a daily basis.</p>
+</section>
+</section>
+<section id="how-to-access-and-process-the-data">
+<h2>How to access and process the data<a class="headerlink" href="#how-to-access-and-process-the-data" title="Link to this heading">#</a></h2>
+<p>Accessing and analyzing sea ice extent data involves data discovery, downloading, processing, and visualization.</p>
+<p>Below is an example using Python:</p>
+<section id="required-dependencies">
+<h3>Required dependencies:<a class="headerlink" href="#required-dependencies" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>numpy: allows carrying out scientific computing with Python</p></li>
+<li><p>netCDF4, h5netcdf, cdo: for reading netCDF files</p></li>
+<li><p>xarray: for handling netCDF files in an intuitive and interactive way</p></li>
+<li><p>matplotlib: a Python numerical plotting library</p></li>
+<li><p>cartopy: a library for plotting maps and geospatial data analyses in</p></li>
+<li><p>copernicusmarine: for download sea ice concentration data</p></li>
+</ul>
+<p>These can be install into a conda enviroment with the below commands in the terminal or command prompt:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>sea_ice<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11<span class="w"> </span>numpy<span class="w"> </span>netcdf4<span class="w"> </span>xarray<span class="w"> </span>matplotlib<span class="w"> </span>cartopy<span class="w"> </span>
+</pre></div>
+</div>
+<p>followed by:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>activate<span class="w"> </span>sea_ice
+</pre></div>
+</div>
+</section>
+<section id="import-libraries">
+<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">netCDF4</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.feature</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cfeature</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">copernicusmarine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.dates</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mdates</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba/envs/polar_eo/lib/python3.12/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="download-sea-ice-concentration-data">
+<h3>Download sea ice concentration data<a class="headerlink" href="#download-sea-ice-concentration-data" title="Link to this heading">#</a></h3>
+<p>Marine Copernicus provides freely available sea ice concentration data in netCDF format. You need to register once here: <a class="reference external" href="https://data.marine.copernicus.eu/register">https://data.marine.copernicus.eu/register</a> in order to download your file of interest.</p>
+<p>Here, we directly use the L4 product of the sea ice concentration in the Baltic Sea. There are two options: through API or manually through the website.</p>
+<section id="api">
+<h4>API<a class="headerlink" href="#api" title="Link to this heading">#</a></h4>
+<p>To download a desired subset from a Python environment, you first need to:<br />
+✅ Install &amp; import Copernicus Marine API<br />
+✅ Authenticate with your credentials<br />
+✅ Use get_original_files() to download the NetCDF file</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># copernicusmarine.subset(</span>
+<span class="c1">#   dataset_id=&quot;FMI-BAL-SEAICE_CONC-L4-NRT-OBS&quot;,</span>
+<span class="c1">#   variables=[&quot;concentration_range&quot;, &quot;ice_concentration&quot;, &quot;product_quality&quot;],</span>
+<span class="c1">#   minimum_longitude=9,</span>
+<span class="c1">#   maximum_longitude=31,</span>
+<span class="c1">#   minimum_latitude=53.20000076293945,</span>
+<span class="c1">#   maximum_latitude=66.19999694824219,</span>
+<span class="c1">#   start_datetime=&quot;2025-01-01T00:00:00&quot;,</span>
+<span class="c1">#   end_datetime=&quot;2024-01-01T00:00:00&quot;,</span>
+<span class="c1"># )</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="manually">
+<h4>Manually<a class="headerlink" href="#manually" title="Link to this heading">#</a></h4>
+<p>Access the website through the link:  <a class="reference external" href="https://data.marine.copernicus.eu/product/SEAICE_BAL_SEAICE_L4_NRT_OBSERVATIONS_011_004/download?dataset=FMI-BAL-SEAICE_CONC-L4-NRT-OBS">https://data.marine.copernicus.eu/product/SEAICE_BAL_SEAICE_L4_NRT_OBSERVATIONS_011_004/download?dataset=FMI-BAL-SEAICE_CONC-L4-NRT-OBS</a>.<br />
+Sea ice concentration<br />
+Product: SEAICE_BAL_SEAICE_L4_NRT_OBSERVATIONS_011_004<br />
+Dataset: FMI-BAL-SEAICE_CONC-L4-NRT-OBS<br />
+Spatial region: Baltic Sea: Lon [9°E 31°E] Lat [53.2°N 66.2°N]<br />
+Temporal resolution: daily mean<br />
+Horizontal resolution: 1 km<br />
+Time period: from 2018-01 to Present</p>
+<ul class="simple">
+<li><p>Select a subset based on your interest (e.g. the entire area for the last year? Or a smaller area for the entire time period?). Note that the files are large and that you might need to download them
+The downloaded file will have a similar name to “FMI-BAL-SEAICE_CONC-L4-NRT- OBS_1741189789828.nc”.</p></li>
+</ul>
+</section>
+</section>
+<section id="load-the-data-and-calculate-the-sea-ice-extent">
+<h3>Load the data and calculate the sea ice extent<a class="headerlink" href="#load-the-data-and-calculate-the-sea-ice-extent" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the netCDF file and examine the contents</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;FMI-BAL-SEAICE_CONC-L4-NRT-OBS_multi-vars_9.00E-31.00E_53.20N-66.20N_2025-01-01.nc&#39;</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+<span class="c1"># Or you can upload your file if you’re using e.g. Jupyter Notebook and open the dataset directly with netCDF4</span>
+<span class="c1"># ds = netCDF4.Dataset(&#39;FMI-BAL-SEAICE_CONC-L4-NRT-OBS_1741189789828.nc&#39;)</span>
+
+<span class="c1">#Display the dataset&#39;s variables (ice_concentration, latitude, longitude, and time)</span>
+<span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">File ~/micromamba/envs/polar_eo/lib/python3.12/site-packages/xarray/backends/file_manager.py:211,</span> in <span class="ni">CachingFileManager._acquire_with_cache_info</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">211</span>     <span class="n">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">212</span> <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+
+<span class="nn">File ~/micromamba/envs/polar_eo/lib/python3.12/site-packages/xarray/backends/lru_cache.py:56,</span> in <span class="ni">LRUCache.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">56</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;/home/runner/work/polar_eo/polar_eo/polar_eo/datasets/FMI-BAL-SEAICE_CONC-L4-NRT-OBS_multi-vars_9.00E-31.00E_53.20N-66.20N_2025-01-01.nc&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False)), &#39;c11601b5-b8a3-4105-ad64-8e8b6830ac54&#39;]
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Load the netCDF file and examine the contents</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;FMI-BAL-SEAICE_CONC-L4-NRT-OBS_multi-vars_9.00E-31.00E_53.20N-66.20N_2025-01-01.nc&#39;</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># Or you can upload your file if you’re using e.g. Jupyter Notebook and open the dataset directly with netCDF4</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># ds = netCDF4.Dataset(&#39;FMI-BAL-SEAICE_CONC-L4-NRT-OBS_1741189789828.nc&#39;)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1">#Display the dataset&#39;s variables (ice_concentration, latitude, longitude, and time)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">ds</span>
+
+<span class="nn">File ~/micromamba/envs/polar_eo/lib/python3.12/site-packages/xarray/backends/api.py:687,</span> in <span class="ni">open_dataset</span><span class="nt">(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, inline_array, chunked_array_type, from_array_kwargs, backend_kwargs, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">675</span> <span class="n">decoders</span> <span class="o">=</span> <span class="n">_resolve_decoders_kwargs</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span>     <span class="n">decode_cf</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">677</span>     <span class="n">open_backend_dataset_parameters</span><span class="o">=</span><span class="n">backend</span><span class="o">.</span><span class="n">open_dataset_parameters</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">683</span>     <span class="n">decode_coords</span><span class="o">=</span><span class="n">decode_coords</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">684</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">686</span> <span class="n">overwrite_encoded_chunks</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;overwrite_encoded_chunks&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">687</span> <span class="n">backend_ds</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">688</span>     <span class="n">filename_or_obj</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">689</span>     <span class="n">drop_variables</span><span class="o">=</span><span class="n">drop_variables</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">690</span>     <span class="o">**</span><span class="n">decoders</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">691</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">692</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">693</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">_dataset_from_backend_dataset</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">694</span>     <span class="n">backend_ds</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">695</span>     <span class="n">filename_or_obj</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">705</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">706</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">707</span> <span class="k">return</span> <span class="n">ds</span>
+
+<span class="nn">File ~/micromamba/envs/polar_eo/lib/python3.12/site-packages/xarray/backends/netCDF4_.py:666,</span> in <span class="ni">NetCDF4BackendEntrypoint.open_dataset</span><span class="nt">(self, filename_or_obj, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, use_cftime, decode_timedelta, group, mode, format, clobber, diskless, persist, auto_complex, lock, autoclose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">644</span> <span class="k">def</span><span class="w"> </span><span class="nf">open_dataset</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">645</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">646</span>     <span class="n">filename_or_obj</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">ReadBuffer</span> <span class="o">|</span> <span class="n">AbstractDataStore</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">663</span>     <span class="n">autoclose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">664</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dataset</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">665</span>     <span class="n">filename_or_obj</span> <span class="o">=</span> <span class="n">_normalize_path</span><span class="p">(</span><span class="n">filename_or_obj</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">666</span>     <span class="n">store</span> <span class="o">=</span> <span class="n">NetCDF4DataStore</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">667</span>         <span class="n">filename_or_obj</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">668</span>         <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">669</span>         <span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">670</span>         <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">671</span>         <span class="n">clobber</span><span class="o">=</span><span class="n">clobber</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">672</span>         <span class="n">diskless</span><span class="o">=</span><span class="n">diskless</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">673</span>         <span class="n">persist</span><span class="o">=</span><span class="n">persist</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">674</span>         <span class="n">auto_complex</span><span class="o">=</span><span class="n">auto_complex</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">675</span>         <span class="n">lock</span><span class="o">=</span><span class="n">lock</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span>         <span class="n">autoclose</span><span class="o">=</span><span class="n">autoclose</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">677</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">679</span>     <span class="n">store_entrypoint</span> <span class="o">=</span> <span class="n">StoreBackendEntrypoint</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">680</span>     <span class="k">with</span> <span class="n">close_on_error</span><span class="p">(</span><span class="n">store</span><span class="p">):</span>
+
+<span class="nn">File ~/micromamba/envs/polar_eo/lib/python3.12/site-packages/xarray/backends/netCDF4_.py:452,</span> in <span class="ni">NetCDF4DataStore.open</span><span class="nt">(cls, filename, mode, format, group, clobber, diskless, persist, auto_complex, lock, lock_maker, autoclose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">448</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;auto_complex&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">auto_complex</span>
+<span class="g g-Whitespace">    </span><span class="mi">449</span> <span class="n">manager</span> <span class="o">=</span> <span class="n">CachingFileManager</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">450</span>     <span class="n">netCDF4</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span>
+<span class="g g-Whitespace">    </span><span class="mi">451</span> <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">452</span> <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">manager</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">lock</span><span class="o">=</span><span class="n">lock</span><span class="p">,</span> <span class="n">autoclose</span><span class="o">=</span><span class="n">autoclose</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba/envs/polar_eo/lib/python3.12/site-packages/xarray/backends/netCDF4_.py:393,</span> in <span class="ni">NetCDF4DataStore.__init__</span><span class="nt">(self, manager, group, mode, lock, autoclose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">391</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group</span> <span class="o">=</span> <span class="n">group</span>
+<span class="g g-Whitespace">    </span><span class="mi">392</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">mode</span>
+<span class="ne">--&gt; </span><span class="mi">393</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ds</span><span class="o">.</span><span class="n">data_model</span>
+<span class="g g-Whitespace">    </span><span class="mi">394</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ds</span><span class="o">.</span><span class="n">filepath</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">395</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_remote</span> <span class="o">=</span> <span class="n">is_remote_uri</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filename</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba/envs/polar_eo/lib/python3.12/site-packages/xarray/backends/netCDF4_.py:461,</span> in <span class="ni">NetCDF4DataStore.ds</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">459</span> <span class="nd">@property</span>
+<span class="g g-Whitespace">    </span><span class="mi">460</span> <span class="k">def</span><span class="w"> </span><span class="nf">ds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">461</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acquire</span><span class="p">()</span>
+
+<span class="nn">File ~/micromamba/envs/polar_eo/lib/python3.12/site-packages/xarray/backends/netCDF4_.py:455,</span> in <span class="ni">NetCDF4DataStore._acquire</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">454</span> <span class="k">def</span><span class="w"> </span><span class="nf">_acquire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">needs_lock</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">455</span>     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_manager</span><span class="o">.</span><span class="n">acquire_context</span><span class="p">(</span><span class="n">needs_lock</span><span class="p">)</span> <span class="k">as</span> <span class="n">root</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">456</span>         <span class="n">ds</span> <span class="o">=</span> <span class="n">_nc4_require_group</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">457</span>     <span class="k">return</span> <span class="n">ds</span>
+
+<span class="nn">File ~/micromamba/envs/polar_eo/lib/python3.12/contextlib.py:137,</span> in <span class="ni">_GeneratorContextManager.__enter__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">135</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">137</span>     <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span> <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;generator didn&#39;t yield&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+
+<span class="nn">File ~/micromamba/envs/polar_eo/lib/python3.12/site-packages/xarray/backends/file_manager.py:199,</span> in <span class="ni">CachingFileManager.acquire_context</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span> <span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span> <span class="k">def</span><span class="w"> </span><span class="nf">acquire_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">needs_lock</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Context manager for acquiring a file.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">199</span>     <span class="n">file</span><span class="p">,</span> <span class="n">cached</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acquire_with_cache_info</span><span class="p">(</span><span class="n">needs_lock</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">200</span>     <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span>         <span class="k">yield</span> <span class="n">file</span>
+
+<span class="nn">File ~/micromamba/envs/polar_eo/lib/python3.12/site-packages/xarray/backends/file_manager.py:217,</span> in <span class="ni">CachingFileManager._acquire_with_cache_info</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span>     <span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span>
+<span class="ne">--&gt; </span><span class="mi">217</span> <span class="n">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opener</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">==</span> <span class="s2">&quot;w&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span>     <span class="c1"># ensure file doesn&#39;t get overridden when opened again</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span>
+
+<span class="nn">File src/netCDF4/_netCDF4.pyx:2521,</span> in <span class="ni">netCDF4._netCDF4.Dataset.__init__</span><span class="nt">()</span>
+
+<span class="nn">File src/netCDF4/_netCDF4.pyx:2158,</span> in <span class="ni">netCDF4._netCDF4._ensure_nc_success</span><span class="nt">()</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/home/runner/work/polar_eo/polar_eo/polar_eo/datasets/FMI-BAL-SEAICE_CONC-L4-NRT-OBS_multi-vars_9.00E-31.00E_53.20N-66.20N_2025-01-01.nc&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract required data</span>
+<span class="c1"># Accessing the ice concentration data (3D array: time, latitude, longitude)</span>
+<span class="n">sea_ice_concentration</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">ice_concentration</span><span class="c1">#.variables[&#39;ice_concentration&#39;][:]</span>
+
+<span class="c1"># Accessing latitude, longitude, and time data</span>
+<span class="n">latitude</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">][:]</span>
+<span class="n">longitude</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">][:]</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># Check the shape and data of these variables</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ice concentration shape:&quot;</span><span class="p">,</span> <span class="n">sea_ice_concentration</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Latitude shape:&quot;</span><span class="p">,</span> <span class="n">latitude</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Longitude shape:&quot;</span><span class="p">,</span> <span class="n">longitude</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time:&quot;</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the sea ice concentration threshold (e.g., 15%)</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mi">15</span>  <span class="c1"># percentage threshold</span>
+
+<span class="c1"># Create a mask where sea ice concentration is greater than or equal to 15%</span>
+<span class="n">sea_ice_extent_mask</span> <span class="o">=</span> <span class="n">sea_ice_concentration</span> <span class="o">&gt;=</span> <span class="n">threshold</span>
+
+<span class="c1"># Calculate the cells where the concentration is above the threshold for each time slice</span>
+<span class="c1"># Sum the mask across latitude and longitude dimensions</span>
+<span class="n">sea_ice_extent</span> <span class="o">=</span> <span class="n">sea_ice_extent_mask</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">])</span>
+
+<span class="c1"># Print the sea ice extent for each time slice (in grid cells)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Sea Ice Extent (in grid cells) for each time slice: </span><span class="si">{</span><span class="n">sea_ice_extent</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Earth&#39;s radius in kilometers</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mi">6371</span>  <span class="c1"># Radius of the Earth in km</span>
+
+<span class="c1"># Calculate the difference in latitudes and longitudes (assuming uniform grid spacing)</span>
+<span class="n">delta_lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">latitude</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">latitude</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Difference in latitudes (degrees)</span>
+<span class="n">delta_lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">longitude</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">longitude</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Difference in longitudes (degrees)</span>
+
+<span class="c1"># Convert degrees to radians</span>
+<span class="n">delta_lat_rad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">delta_lat</span><span class="p">)</span>
+<span class="n">delta_lon_rad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">delta_lon</span><span class="p">)</span>
+
+<span class="c1"># Calculate the area of one grid cell in square kilometers</span>
+<span class="n">cell_area_km2</span> <span class="o">=</span> <span class="p">(</span><span class="n">R</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">delta_lat_rad</span> <span class="o">*</span> <span class="n">delta_lon_rad</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">latitude</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
+
+<span class="c1"># Now calculate the sea ice extent in km²</span>
+<span class="n">sea_ice_extent_km2</span> <span class="o">=</span> <span class="n">sea_ice_extent</span> <span class="o">*</span> <span class="n">cell_area_km2</span>
+
+<span class="c1"># Print the sea ice extent in km² for each time slice</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sea Ice Extent (in km²) for each time slice:&quot;</span><span class="p">,</span> <span class="n">sea_ice_extent_km2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-sea-ice-concentration-and-extent-geographically">
+<h3>Visualize sea ice concentration and extent geographically<a class="headerlink" href="#visualize-sea-ice-concentration-and-extent-geographically" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="c1"># Set the extent for the Baltic Sea region</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="mi">9</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mf">53.2</span><span class="p">,</span> <span class="mf">66.2</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="c1"># Add land features and coastlines</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">COASTLINE</span><span class="p">)</span>
+
+<span class="c1"># Plot the sea ice concentration for the first time slice</span>
+<span class="c1"># Note that you can select any desired time span</span>
+<span class="n">sea_ice_concentration</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span>
+    <span class="n">cbar_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;Sea Ice Concentration (%)&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">sea_ice_extent_mask</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
+    <span class="n">linewidths</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sea Ice Concentration and Extent (15% Threshold) in the Baltic Sea&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-the-sea-ice-extent-time-series">
+<h3>Plot the sea ice extent time series<a class="headerlink" href="#plot-the-sea-ice-extent-time-series" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Plot sea ice extent (in km²) over time</span>
+
+<span class="c1"># # Convert time from seconds since 1970-01-01 to datetime</span>
+<span class="c1"># time_units = &#39;seconds since 1970-01-01 00:00:00&#39;  # This is based on your dataset&#39;s time units</span>
+<span class="c1"># reference_time = datetime.strptime(time_units, &#39;seconds since %Y-%m-%d %H:%M:%S&#39;)</span>
+
+<span class="c1"># # Convert time values to actual datetime</span>
+<span class="c1"># time_in_days = float(time) / (24 * 60 * 60)  # Convert seconds to days</span>
+<span class="c1"># dates = [reference_time + timedelta(days=float(t)) for t in time_in_days]</span>
+
+<span class="c1"># # Plot sea ice extent (in km²) over real time</span>
+<span class="c1"># plt.figure(figsize=(10, 5))</span>
+<span class="c1"># plt.plot(dates, sea_ice_extent_km2, marker=&#39;o&#39;, linestyle=&#39;-&#39;, color=&#39;b&#39;)</span>
+<span class="c1"># # Format the x-axis to show both date (dd/mm/yyyy) and time (HH:mm)</span>
+<span class="c1"># plt.gca().xaxis.set_major_formatter(mdates.DateFormatter(&#39;%d/%m/%Y %H:%M&#39;))</span>
+
+<span class="c1"># plt.xlabel(&#39;Date &amp; Time&#39;)</span>
+<span class="c1"># plt.ylabel(&#39;Sea Ice Extent (km²)&#39;)</span>
+<span class="c1"># plt.title(&#39;Sea Ice Extent Over Time (in km²)&#39;)</span>
+<span class="c1"># plt.grid(True)</span>
+<span class="c1"># plt.xticks(rotation=45)  # Rotate dates for better readability</span>
+<span class="c1"># plt.tight_layout()</span>
+<span class="c1"># plt.show()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-next">
+<h3>What next ?<a class="headerlink" href="#what-next" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>try to create a map of the annual mean sea ice concentration each year from 2018 to 2024</p></li>
+<li><p>try to plot the monthly or seasonal time series of the sea ice extent each year</p></li>
+</ul>
+</section>
+</section>
+<section id="common-challenges-and-solutions">
+<h2>Common challenges and solutions<a class="headerlink" href="#common-challenges-and-solutions" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Data gaps and continuity: Use merged climate data records (CDRs) to ensure consistency.</p></li>
+<li><p>Resolution vs. coverage trade-offs: Use passive microwave for climate trends; SAR for high-resolution studies.</p></li>
+<li><p>Projection handling: Polar stereographic grids require appropriate cartographic projections.</p></li>
+</ul>
+</section>
+<section id="case-study-example-application">
+<h2>Case study / example application<a class="headerlink" href="#case-study-example-application" title="Link to this heading">#</a></h2>
+<section id="arctic-sea-ice-decline-19792023">
+<h3>Arctic sea ice decline (1979–2023)<a class="headerlink" href="#arctic-sea-ice-decline-19792023" title="Link to this heading">#</a></h3>
+<p>One of the most prominent applications of satellite EO data is documenting the dramatic decline of Arctic sea ice over the past several decades. Satellite passive microwave observations provide a continuous record of Arctic ice extent since late 1978, revealing significant downward trends. For example, analysis of the 43-year record (1979–2021) shows that the annual average Arctic sea ice extent has been decreasing by about –54,300 km² per year. This corresponds to an overall decline of roughly 12.6% per decade in end-of-summer (September) ice extent relative to the 1981–2010 average (Serreze &amp; Stroeve, 2015).</p>
+</section>
+<section id="antarctic-sea-ice-variability-and-decline">
+<h3>Antarctic sea ice variability and decline<a class="headerlink" href="#antarctic-sea-ice-variability-and-decline" title="Link to this heading">#</a></h3>
+<p>In contrast to the Arctic, Antarctic sea ice extent has shown a more complex pattern. From 1979 until around 2014, Antarctic ice extent exhibited a slight overall increase (~1% per decade) with high year-to-year variability. However, since then, Antarctic sea ice has taken a sharp downturn. Satellites recorded record-low extents in consecutive years: in February 2022 and again in February 2023, the Antarctic summer minimum plummeted to unprecedented levels. The 2023 minimum was just 1.79 million km² – the lowest in the 46-year satellite record (Turner et al., 2023).</p>
+<p>Figure 1) These images use satellite-derived sea ice concentration data to show average minimum and maximum sea ice during March and September 2020 for the Arctic and Antarctic as compared to the 1981 to 2010 average. Darker blues depict lower sea ice concentration and whites depict higher sea ice concentration. Credit: National Snow and Ice Data Center (<a class="reference external" href="https://nsidc.org/home">https://nsidc.org/home</a>)</p>
+</section>
+</section>
+<section id="additional-resources-references">
+<h2>Additional resources &amp; references<a class="headerlink" href="#additional-resources-references" title="Link to this heading">#</a></h2>
+<section id="data-portals">
+<h3>Data portals:<a class="headerlink" href="#data-portals" title="Link to this heading">#</a></h3>
+<p>National Snow and Ice Data Center (NSIDC): <a class="reference external" href="https://nsidc.org">https://nsidc.org</a>
+Copernicus Marine Service (CMEMS): <a class="reference external" href="https://marine.copernicus.eu">https://marine.copernicus.eu</a>
+NASA Earthdata: <a class="reference external" href="https://earthdata.nasa.gov">https://earthdata.nasa.gov</a>
+National Snow and Ice Data Center (NSIDC): <a class="reference external" href="https://nsidc.org">https://nsidc.org</a>
+PolarView: <a class="reference external" href="https://www.polarview.aq">https://www.polarview.aq</a>
+ESA SMOS Portal: <a class="reference external" href="https://earth.esa.int/eogateway/missions/smos">https://earth.esa.int/eogateway/missions/smos</a>
+Tools:
+Met Office Climate Dashboard: <a class="reference external" href="https://climate.metoffice.cloud/sea_ice.html#datasets">https://climate.metoffice.cloud/sea_ice.html#datasets</a></p>
+</section>
+<section id="tutorials">
+<h3>Tutorials:<a class="headerlink" href="#tutorials" title="Link to this heading">#</a></h3>
+<p>Calculate Antarctic Sea Ice extent from a time series of Sea Ice concentration data: <a class="github reference external" href="https://github.com/lo-ise/antarctic-seaice-extent">lo-ise/antarctic-seaice-extent</a>
+Analyse radar time-series with the Sentinel-1 Toolbox from esa: <a class="reference external" href="http://step.esa.int/docs/tutorials/S1TBX%20Time-series%20analysis%20with%20Sentinel-1.pdf">http://step.esa.int/docs/tutorials/S1TBX Time-series analysis with Sentinel-1.pdf</a></p>
+</section>
+<section id="useful-python-libraries">
+<h3>Useful Python Libraries:<a class="headerlink" href="#useful-python-libraries" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Sentinelsat: Library for downloading Sentinel data. <a class="reference external" href="https://sentinelsat.readthedocs.io">https://sentinelsat.readthedocs.io</a></p></li>
+<li><p>Xarray: For handling NetCDF data and performing raster operations. <a class="reference external" href="https://xarray.dev">https://xarray.dev</a></p></li>
+<li><p>Rasterio: For reading and processing raster data. <a class="reference external" href="https://rasterio.readthedocs.io">https://rasterio.readthedocs.io</a></p></li>
+<li><p>Cartopy: For geospatial visualization. <a class="reference external" href="https://scitools.org.uk/cartopy">https://scitools.org.uk/cartopy</a></p></li>
+<li><p>Pyresample: For resampling geospatial raster data. <a class="reference external" href="https://pyresample.readthedocs.io">https://pyresample.readthedocs.io</a></p></li>
+<li><p>GeoPandas: For vector geospatial data manipulation, including spatial joins and filtering. <a class="reference external" href="https://geopandas.org">https://geopandas.org</a></p></li>
+<li><p>Dask: For parallel computing and large-scale geospatial data analysis. <a class="reference external" href="https://dask.org">https://dask.org</a></p></li>
+<li><p>Segment Geospatial: For object-based image segmentation, feature extraction, and remote sensing applications. <a class="reference external" href="https://segment-geospatial.readthedocs.io">https://segment-geospatial.readthedocs.io</a></p></li>
+</ul>
+</section>
+<section id="relevant-publications">
+<h3>Relevant publications:<a class="headerlink" href="#relevant-publications" title="Link to this heading">#</a></h3>
+<p>Cavalieri, D. J., Parkinson, C. L., Gloersen, P., &amp; Zwally, H. J. (1999). Deriving long-term time series of sea ice cover from satellite passive-microwave multisensor data sets. Journal of Geophysical Research: Oceans, 104(C7), 15803–15814. DOI: 10.1029/1999JC900081</p>
+<p>Comiso, J. C., &amp; Nishio, F. (2008). Trends in the sea ice cover using enhanced and compatible AMSR-E, SSM/I, and SMMR data. Journal of Geophysical Research: Oceans, 113(C02S07), 1–20. DOI: 10.1029/2007JC0043257</p>
+<p>Eayrs, C., Holland, D. M., Francis, D., Wagner, T., Kumar, R., &amp; Li, X. (2019). Understanding the seasonal cycle of Antarctic sea ice extent in the context of longer-term variability. Reviews of Geophysics, 57(4), 1037–1064. DOI: <a class="reference external" href="https://doi.org/10.1029/2018RG000631">https://doi.org/10.1029/2018RG000631</a></p>
+<p>Eayrs, C., Li, X., Raphael, M. N., &amp; Holland, D. M. (2021). Rapid decline in Antarctic sea ice in recent years hints at future change. Nature Geoscience, 14(7), 460–464. DOI: 10.1038/s41561-021-00768-3</p>
+<p>Jena, B., et al. (2024). Recent Antarctic sea ice decline linked to oceanic preconditioning and climate variability. The Cryosphere, 17, 701–723. DOI: <a class="reference external" href="https://doi.org/10.5194/tc-17-701-2023">https://doi.org/10.5194/tc-17-701-2023</a></p>
+<p>Krauzig N., Flocco D., Kern S., Zambianchi E. (2024). Exploring sea-ice transport dynamics at the eastern gate of the Ross Sea. Deep-Sea Research Part II, 105428, <a class="reference external" href="https://doi.org/10.1016/j.dsr2.2024.105428">https://doi.org/10.1016/j.dsr2.2024.105428</a>.</p>
+<p>Massom, R. A., &amp; Stammerjohn, S. E. (2010). Antarctic sea ice change and variability — Physical and ecological implications. Polar Science, 4(2), 149–186. DOI: <a class="reference external" href="https://doi.org/10.1016/j.polar.2010.05.001">https://doi.org/10.1016/j.polar.2010.05.001</a></p>
+<p>Meier, W. N., et al. (2014). Sea ice concentrations from passive microwave data. Journal of Geophysical Research: Oceans, 119(6), 3773-3796. DOI: 10.1002/2014JC009972</p>
+<p>Parkinson, C. L., &amp; Cavalieri, D. J. (2012). Antarctic sea ice variability and trends, 1979–2010. The Cryosphere, 6(4), 871–880. DOI: <a class="reference external" href="https://doi.org/10.5194/tc-6-871-2012">https://doi.org/10.5194/tc-6-871-2012</a></p>
+<p>Parkinson, C. L., &amp; DiGirolamo, N. E. (2021). Sea ice extents continue to set new records: Arctic, Antarctic, and global results. Remote Sensing of Environment, 267, 112753. DOI: <a class="reference external" href="https://doi.org/10.1016/j.rse.2021.112753">https://doi.org/10.1016/j.rse.2021.112753</a></p>
+<p>Purich, A., &amp; Doddridge, E. W. (2023). Record low Antarctic sea ice coverage indicates a new sea ice state. Communications Earth &amp; Environment, 4(1), 1–9. DOI: <a class="reference external" href="https://doi.org/10.1038/s43247-023-00961-9">https://doi.org/10.1038/s43247-023-00961-9</a></p>
+<p>Schroeter, S., O’Kane, T. J., &amp; Sandery, P. A. (2023). Antarctic sea ice regime shift associated with decreasing zonal symmetry in the Southern Annular Mode. The Cryosphere, 17(2), 701–717. DOI: <a class="reference external" href="https://doi.org/10.5194/tc-17-701-2023">https://doi.org/10.5194/tc-17-701-2023</a></p>
+<p>Serreze, M. C., &amp; Stroeve, J. (2015). Arctic sea ice trends, variability, and implications. The Cryosphere, 9, 17-34. DOI: 10.5194/tc-9-17-2015</p>
+<p>Stroeve, J., Holland, M. M., Meier, W. N., Scambos, T., &amp; Serreze, M. (2007). Arctic sea ice decline: Faster than forecast? Geophysical Research Letters, 34(9), L09501. DOI: 10.1029/2007GL029703</p>
+<p>Stroeve, J. C., Serreze, M. C., Holland, M. M., Kay, J. E., Maslanik, J., &amp; Barrett, A. P. (2012). The Arctic’s rapidly shrinking sea ice cover: A research synthesis. Climatic Change, 110(3–4), 1005–1027. DOI: 10.1007/s10584-011-0101-1</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./datasets"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="datasets.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Polar Dataset Guides</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="template.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Template: Title</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro">Intro</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plain-language-introduction">Plain language introduction:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-eo-datasets-platforms">Key EO datasets &amp; platforms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#passive-microwave-radiometers-ssmi-s-amsr2">Passive Microwave Radiometers (SSMI/S, AMSR2):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-aperture-radar-sar-sentinel-1">Synthetic Aperture Radar (SAR) – Sentinel-1:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optical-imagers-modis-and-viirs">Optical Imagers – MODIS and VIIRS:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#icesat-2-laser-altimetry">ICESat-2 (Laser Altimetry):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-notable-datasets-platforms">Other Notable Datasets/Platforms:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-and-process-the-data">How to access and process the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-dependencies">Required dependencies:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-sea-ice-concentration-data">Download sea ice concentration data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#api">API</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#manually">Manually</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-data-and-calculate-the-sea-ice-extent">Load the data and calculate the sea ice extent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-sea-ice-concentration-and-extent-geographically">Visualize sea ice concentration and extent geographically</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-sea-ice-extent-time-series">Plot the sea ice extent time series</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-next">What next ?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-challenges-and-solutions">Common challenges and solutions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-example-application">Case study / example application</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arctic-sea-ice-decline-19792023">Arctic sea ice decline (1979–2023)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#antarctic-sea-ice-variability-and-decline">Antarctic sea ice variability and decline</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources-references">Additional resources &amp; references</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-portals">Data portals:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials">Tutorials:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-python-libraries">Useful Python Libraries:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relevant-publications">Relevant publications:</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matt Tankersley
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
