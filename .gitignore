@@ -1,3 +1,4 @@
+polar_eo/datasets/*.nc
 
 .DS_Store
 

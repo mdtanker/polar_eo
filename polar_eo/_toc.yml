@@ -3,7 +3,17 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+parts:
+- caption: Polar EO Data
+  chapters:
+  - file: accessing_data
+  - file: datasets/datasets
+    sections:
+      - file: datasets/sea_ice_extent
+      - file: datasets/template
+
+- caption: Website Creation Guides
+  chapters:
+  - file: markdown
+  - file: notebooks
+  - file: markdown-notebooks
