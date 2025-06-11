@@ -23,6 +23,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           # preview-branch: main
           # source-dir: .
-          source-dir: ./polar_eo/_build/
+          source-dir: ./_build/
           umbrella-dir: pr-preview
           action: auto
